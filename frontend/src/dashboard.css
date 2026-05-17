@@ -1,0 +1,296 @@
+
+/* ══════════════════════════════════════════════════════════════
+   EXECUTIVE DASHBOARD — ek stiller
+   Bu bloğu mevcut index.css'in SONUNA ekleyin
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Dashboard kök ────────────────────────────────────────── */
+.dash-root {
+  padding: 0 2.5rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 1200px;
+  animation: dashIn 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes dashIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.dash-empty {
+  display: flex; align-items: center; justify-content: center;
+  min-height: 300px; color: var(--text-muted); font-size: 0.9rem;
+}
+
+/* ── Başlık ────────────────────────────────────────────────── */
+.dash-header {
+  display: flex; align-items: flex-start;
+  justify-content: space-between;
+  padding-top: 2rem;
+  gap: 1rem;
+}
+.dash-title {
+  font-family: var(--font-display);
+  font-size: 1.5rem; font-weight: 700;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+}
+.dash-subtitle {
+  font-size: 0.8125rem; color: var(--text-muted);
+  margin-top: 4px;
+}
+.dash-new-upload-btn {
+  height: 38px; padding: 0 1.1rem;
+  display: flex; align-items: center;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border-medium);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  font-size: 0.8125rem; font-weight: 500;
+  transition: all var(--transition);
+  white-space: nowrap; flex-shrink: 0;
+}
+.dash-new-upload-btn:hover {
+  border-color: var(--red); color: var(--red);
+  background: rgba(232,34,30,0.04);
+}
+
+/* ── KPI Grid ──────────────────────────────────────────────── */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.kpi-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-lg);
+  padding: 1.25rem 1.25rem 1rem;
+  display: flex; flex-direction: column; gap: 6px;
+  position: relative; overflow: hidden;
+  animation: kpiIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition: border-color var(--transition), box-shadow var(--transition);
+}
+.kpi-card:hover {
+  border-color: var(--border-medium);
+  box-shadow: var(--shadow-card);
+}
+
+@keyframes kpiIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.kpi-card-top {
+  display: flex; align-items: flex-start; justify-content: space-between;
+}
+.kpi-label {
+  font-size: 0.75rem; font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+.kpi-icon {
+  width: 32px; height: 32px; border-radius: var(--r-md);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.kpi-value {
+  font-family: var(--font-display);
+  font-size: 1.375rem; font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+.kpi-sub {
+  font-size: 0.75rem; color: var(--text-muted);
+}
+.kpi-bar {
+  height: 3px; border-radius: var(--r-full);
+  margin-top: 6px; overflow: hidden;
+}
+.kpi-bar-fill {
+  height: 100%; width: 70%;
+  border-radius: var(--r-full);
+  opacity: 0.7;
+}
+
+/* ── Chart Layout ──────────────────────────────────────────── */
+
+/* ── Chart Card ────────────────────────────────────────────── */
+.chart-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition: border-color var(--transition);
+}
+.chart-card:hover { border-color: var(--border-medium); }
+
+.chart-card-header {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  padding: 1.125rem 1.25rem 0.75rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.chart-card-title {
+  font-family: var(--font-display);
+  font-size: 0.9375rem; font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+}
+.chart-card-sub {
+  font-size: 0.75rem; color: var(--text-muted);
+  margin-top: 2px;
+}
+.chart-card-body {
+  padding: 1rem 1rem 0.75rem;
+}
+.chart-card--wide .chart-card-body {
+  padding: 0.75rem 1.25rem 1rem;
+}
+
+/* ── Custom Tooltip ────────────────────────────────────────── */
+.chart-tooltip {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--r-md);
+  padding: 10px 14px;
+  font-family: var(--font-body);
+  box-shadow: var(--shadow-card);
+  min-width: 140px;
+}
+.chart-tooltip-title {
+  font-size: 0.8125rem; font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+.chart-tooltip-val {
+  font-size: 0.9375rem; font-weight: 700;
+  color: var(--text-primary);
+}
+.chart-tooltip-sub {
+  font-size: 0.75rem; color: var(--text-muted);
+  margin-top: 2px;
+}
+.chart-tooltip-row {
+  display: flex; justify-content: space-between; gap: 16px;
+  font-size: 0.8125rem;
+  margin-top: 3px;
+}
+
+/* ── Marka Metrik Seçici ───────────────────────────────────── */
+
+.chart-metric-tab.active {
+  background: var(--red); color: #fff; border-color: var(--red);
+}
+
+/* ── Bestseller/Worstseller Tabs ───────────────────────────── */
+
+.table-tab--best.active  { background: rgba(22,163,74,0.1);  color: #16a34a; border-color: rgba(22,163,74,0.3); }
+.table-tab--worst.active { background: rgba(220,38,38,0.1);  color: #dc2626; border-color: rgba(220,38,38,0.3); }
+
+[data-theme="dark"] .table-tab--best.active  { color: #4ade80; }
+[data-theme="dark"] .table-tab--worst.active { color: #f87171; }
+
+/* ── Ürün Listesi ──────────────────────────────────────────── */
+
+[data-theme="dark"] 
+[data-theme="dark"] 
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .dash-root { padding: 0 1.5rem 2.5rem; }
+  
+  .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+  .dash-root { padding: 0 1rem 2rem; }
+  .kpi-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .kpi-value { font-size: 1.125rem; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   SMARTCARDS — Akilli Urun Analizi
+   Bu blogu mevcut dashboard.css dosyasinin SONUNA ekleyin
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Kok ────────────────────────────────────────────────────── */
+
+/* ── Baslik ─────────────────────────────────────────────────── */
+
+/* ── Cover Ozet Banner ──────────────────────────────────────── */
+
+/* ── Kontroller ─────────────────────────────────────────────── */
+
+/* Tab'lar */
+
+.sc-tab--best.active  {
+  background: rgba(22,163,74,0.12);
+  color: #16a34a;
+}
+.sc-tab--worst.active {
+  background: rgba(220,38,38,0.12);
+  color: #dc2626;
+}
+[data-theme="dark"] .sc-tab--best.active  { color: #4ade80; }
+[data-theme="dark"] .sc-tab--worst.active { color: #f87171; }
+
+/* Siralama */
+
+.sc-sort-btn.active {
+  background: var(--red);
+  border-color: var(--red);
+  color: #fff;
+}
+
+/* ── Kart Izgara ────────────────────────────────────────────── */
+
+/* ── Urun Karti ─────────────────────────────────────────────── */
+
+@keyframes scCardIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Sira numarasi */
+
+/* Gorsel alani */
+
+/* Kart icerik */
+
+/* Baslik + badge'ler */
+
+[data-theme="dark"] 
+
+/* Metrik gridag */
+
+/* Cover kutusu */
+
+/* Cover badge */
+
+/* Footer */
+
+/* Bos durum */
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (max-width: 1200px) {
+  
+}
+@media (max-width: 900px) {
+  
+  
+  
+}
+@media (max-width: 600px) {
+  
+  
+  
+  
+}

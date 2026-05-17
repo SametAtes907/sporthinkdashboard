@@ -1,0 +1,1 @@
+Master Data dosyasını (Örnek_Düzenli_Data.xlsx) bu klasöre kopyalayın.

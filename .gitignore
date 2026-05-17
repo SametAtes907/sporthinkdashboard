@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+*.log
+backend/tmp_uploads/
+backend/etl_outputs/
+__pycache__/
+*.pyc
+.DS_Store
