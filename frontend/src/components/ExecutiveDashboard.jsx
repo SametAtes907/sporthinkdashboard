@@ -433,7 +433,7 @@ export function ExecutiveDashboard({ etlData, meta, theme, onNewUpload }) {
               <XAxis type="number" tick={{fontSize:11,fill:isDark?"#8c8b87":"#6b6b68"}}
                 axisLine={false} tickLine={false}
                 tickFormatter={(v) => markaMetric==="satisSayi" ? fmt.num(v) : fmt.short(v)} />
-              <YAxis type="category" dataKey="marka" width={88}
+              <YAxis type="category" dataKey="marka" width={120}
                 tick={{fontSize:12,fill:isDark?"#c4c4c0":"#333330"}} axisLine={false} tickLine={false} />
               <BTooltip content={<BarTooltipContent />}
                 cursor={{fill:isDark?"rgba(255,255,255,0.04)":"rgba(0,0,0,0.04)"}} />
